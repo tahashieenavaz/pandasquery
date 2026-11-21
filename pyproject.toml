@@ -1,38 +1,85 @@
 [build-system]
-requires = ["setuptools>=61.0", "wheel", "setuptools_scm"]
+requires = [
+    "setuptools>=77.0",
+    "setuptools-scm>=8.0",
+]
 build-backend = "setuptools.build_meta"
+
 
 [project]
 name = "pandas-query"
 dynamic = ["version"]
-authors = [
-  { name="Taha Shieenavaz", email="tahashieenavaz@gmail.com" },
-]
-description = "A highly configurable implementation of Aftab framework, benchmarking different convolutional neural networks and the effects of advanced value functions on parallelized deep Q-networks."
-readme = "README.md"
+
+description = "Provides an efficient simple interface to query a Pandas DataFrame or Series."
+readme = { file = "README.md", content-type = "text/markdown" }
 requires-python = ">=3.9"
+
+license = "MIT"
+license-files = ["LICENSE*"]
+
+authors = [
+    { name = "Taha Shieenavaz", email = "tahashieenavaz@gmail.com" },
+]
+
+keywords = ["series", "pandas", "dataframe", "search", "query"]
+
 classifiers = [
-    "Programming Language :: Python :: 3",
-    "License :: OSI Approved :: MIT License",
-    "Operating System :: OS Independent",
     "Development Status :: 4 - Beta",
     "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3.14",
     "Topic :: Software Development :: Libraries :: Python Modules",
 ]
+
 dependencies = ["numpy", "pandas"]
-keywords = ["pandas", "query", "search", "filter", "dataframe", "series"]
-license = { file = "LICENSE" }
+
+
+[project.optional-dependencies]
+dev = [
+    "build",
+    "pytest",
+    "pytest-cov",
+    "ruff",
+    "mypy",
+    "twine",
+]
+
 
 [project.urls]
 Homepage = "https://github.com/tahashieenavaz/pandas-query"
 Repository = "https://github.com/tahashieenavaz/pandas-query"
 Documentation = "https://github.com/tahashieenavaz/pandas-query#readme"
+Issues = "https://github.com/tahashieenavaz/pandas-query/issues"
+Changelog = "https://github.com/tahashieenavaz/pandas-query/blob/main/CHANGELOG.md"
+
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
 
 [tool.setuptools.packages.find]
 where = ["src"]
-exclude = ["tests*", "docs*", "figures*", "mermaid*", "scripts*"]
+exclude = [
+    "tests*",
+    "docs*",
+    "figures*",
+    "mermaid*",
+    "scripts*",
+]
+
 
 [tool.setuptools.package-data]
 pandas_query = ["*.md", "*.txt", "*.png"]
 
+
 [tool.setuptools_scm]
+version_scheme = "guess-next-dev"
+local_scheme = "no-local-version"
