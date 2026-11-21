@@ -1,3 +1,4 @@
+import pandas
 from pandas_query.conditions import PandasQueryCondition
 from pandas_query.conditions import PandasQueryAndCondition
 from pandas_query.conditions import PandasQueryOrCondition
@@ -15,8 +16,10 @@ class Query:
         self.conditions.append(PandasQueryOrCondition(column=column, value=value))
         return self
 
-    def apply(self):
-        pass
+    def apply(self, dataframe: pandas.DataFrame):
+        _mask = pandas.Series(True, index=dataframe.index)
+        for condition in self.conditions:
+            pass
 
 
 if __name__ == "__main__":
