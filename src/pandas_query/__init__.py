@@ -23,7 +23,13 @@ class Query:
             column, value, binder = condition.unpack()
 
             if condition.is_and():
-                pass
+                _mask &= dataframe[column] == value
+            elif condition.is_or():
+                _mask |= dataframe[column] == value
+            else:
+                raise Exception(
+                    "Unknown condition type was passed. Condition binder must be in {_and, _or}."
+                )
 
 
 if __name__ == "__main__":
