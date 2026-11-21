@@ -12,9 +12,9 @@ class Query:
         return self
 
     def _or(self, column: str, value: any):
-        Query.conditions.append(PandasQueryOrCondition(column=column, value=value))
+        self.conditions.append(PandasQueryOrCondition(column=column, value=value))
         return self
 
 
 if __name__ == "__main__":
-    Query.on("name", "Taha Shieenavaz")
+    Query().on("name", "Taha Shieenavaz")
