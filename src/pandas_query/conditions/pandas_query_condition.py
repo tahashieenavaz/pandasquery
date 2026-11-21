@@ -11,3 +11,9 @@ class PandasQueryCondition:
 
     def unpack(self):
         return (self.column, self.value, self.binder)
+
+    def is_and(self):
+        return self.binder == PandasQueryConditionBinderValues.AND
+
+    def is_or(self):
+        return self.binder == PandasQueryConditionBinderValues.OR
