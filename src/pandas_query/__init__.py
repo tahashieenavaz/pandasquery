@@ -15,6 +15,9 @@ class Query:
         self.conditions.append(PandasQueryOrCondition(column=column, value=value))
         return self
 
+    def apply(self):
+        pass
+
 
 if __name__ == "__main__":
     Query().on("name", "Taha Shieenavaz")
