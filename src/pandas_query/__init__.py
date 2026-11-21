@@ -2,6 +2,7 @@ import pandas
 from pandas_query.conditions import PandasQueryCondition
 from pandas_query.conditions import PandasQueryAndCondition
 from pandas_query.conditions import PandasQueryOrCondition
+from pandas_query.enums import PandasQueryConditionBinderValues
 
 
 class Query:
@@ -19,7 +20,10 @@ class Query:
     def apply(self, dataframe: pandas.DataFrame):
         _mask = pandas.Series(True, index=dataframe.index)
         for condition in self.conditions:
-            pass
+            column, value, binder = condition.unpack()
+
+            if condition.is_and():
+                pass
 
 
 if __name__ == "__main__":
