@@ -8,3 +8,6 @@ class PandasQueryCondition:
         self.column = column
         self.value = value
         self.binder = binder
+
+    def unpack(self):
+        return (self.column, self.value, self.binder)
