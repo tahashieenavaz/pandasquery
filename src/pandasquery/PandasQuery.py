@@ -5,6 +5,7 @@ from pandasquery.conditions import PandasQueryAndCondition
 from pandasquery.conditions import PandasQueryOrCondition
 from pandasquery.enums import PandasQueryConditionTypeEnum
 from pandasquery.enums import PandasQueryOperatorsEnum
+from pandasquery.exceptions import InvalidOperatorException
 from .PandasColumn import PandasColumn
 
 
@@ -83,7 +84,7 @@ class PandasQuery:
             column, value, operator = condition.unpack()
 
             if operator not in PandasQueryOperatorsEnum:
-                raise Exception(f"Invalid operator found in conditions. {operator}")
+                raise InvalidOperatorException(operator)
 
             if isinstance(value, PandasColumn):
                 value = dataframe[value.name]
