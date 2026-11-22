@@ -30,3 +30,6 @@ class PandasQueryCondition:
 
     def is_or(self):
         return self.binder == PandasQueryConditionBinderValues.OR
+
+    def __str__(self):
+        return f"PandasQueryCondition({self.column}, {self.operator}, {self.value})"
