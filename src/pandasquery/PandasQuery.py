@@ -5,7 +5,8 @@ from pandasquery.conditions import PandasQueryAndCondition
 from pandasquery.conditions import PandasQueryOrCondition
 from pandasquery.enums import PandasQueryConditionTypeEnum
 from pandasquery.enums import PandasQueryOperatorsEnum
-from pandasquery.exceptions import InvalidOperatorException
+from pandasquery.exceptions import InvalidOperatorInConditionException
+from pandasquery.exceptions import EmptyConditionsException
 from .PandasColumn import PandasColumn
 
 
@@ -43,9 +44,7 @@ class PandasQuery:
         valueIfNotProvidedBefore: Optional[any] = None,
     ):
         if len(self.conditions) == 0:
-            raise Exception(
-                "Please start the conditions using `where` method and continue using auxiliaries such as `andWhere` and `orWhere`."
-            )
+            raise EmptyConditionsException
 
         self.conditions.append(
             PandasQueryAndCondition(
@@ -64,9 +63,7 @@ class PandasQuery:
         valueIfNotProvidedBefore: Optional[any] = None,
     ):
         if len(self.conditions) == 0:
-            raise Exception(
-                "Please start the conditions using `where` method and continue using auxiliaries such as `andWhere` and `orWhere`."
-            )
+            raise EmptyConditionsException
 
         self.conditions.append(
             PandasQueryOrCondition(
@@ -84,7 +81,7 @@ class PandasQuery:
             column, value, operator = condition.unpack()
 
             if operator not in PandasQueryOperatorsEnum:
-                raise InvalidOperatorException(operator)
+                raise InvalidOperatorInConditionException(operator)
 
             if isinstance(value, PandasColumn):
                 value = dataframe[value.name]
