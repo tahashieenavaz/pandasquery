@@ -24,11 +24,10 @@ class Query:
             )
 
         self.conditions.append(
-            PandasQueryCondition(
+            PandasQueryAndCondition(
                 column=column,
                 operatorOrValue=operatorOrValue,
                 valueIfNotProvidedBefore=valueIfNotProvidedBefore,
-                binder=None,
             )
         )
 
@@ -87,7 +86,7 @@ class Query:
                 _mask |= dataframe[column] == value
             else:
                 raise Exception(
-                    "Unknown condition type was passed. Condition binder must be in {_and, _or}."
+                    "Unknown condition type was passed. Condition binder must be in {AND, OR}."
                 )
         return dataframe[_mask]
 
