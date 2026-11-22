@@ -7,6 +7,7 @@ class PandasQueryCondition:
         self,
         column: str,
         value: any,
+        *,
         binder: Optional[PandasQueryConditionBinderValues] = None,
     ):
         self.column = column
