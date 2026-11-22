@@ -20,7 +20,7 @@ class Query:
     def apply(self, dataframe: pandas.DataFrame):
         _mask = pandas.Series(True, index=dataframe.index)
         for condition in self.conditions:
-            column, value, binder = condition.unpack()
+            column, value = condition.unpack()
 
             if condition.is_and():
                 _mask &= dataframe[column] == value

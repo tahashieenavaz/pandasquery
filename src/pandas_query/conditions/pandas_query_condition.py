@@ -9,8 +9,8 @@ class PandasQueryCondition:
         self.value = value
         self.binder = binder
 
-    def unpack(self):
-        return (self.column, self.value, self.binder)
+    def unpack(self) -> tuple[str, any]:
+        return (self.column, self.value)
 
     def is_and(self):
         return self.binder == PandasQueryConditionBinderValues.AND
