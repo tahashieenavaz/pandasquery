@@ -1,7 +1,7 @@
-from enum import Enum
+from enum import StrEnum
 
 
-class PandasQueryOperators(Enum):
+class PandasQueryOperatorsEnum(StrEnum):
     GreaterThan = ">"
     LesserThan = "<"
     GreaterThanOrEqualTo = ">="

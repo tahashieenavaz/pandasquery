@@ -1,10 +1,9 @@
 from typing import Optional
 from pandas_query.enums import PandasQueryConditionBinderValues
-from pandas_query.enums import PandasQueryOperators
+from pandas_query.enums import PandasQueryOperatorsEnum
 
 
 class PandasQueryCondition:
-
     def __init__(
         self,
         column: str,
@@ -21,7 +20,7 @@ class PandasQueryCondition:
             self.operator = operatorOrValue
         else:
             self.value = operatorOrValue
-            self.operator = PandasQueryOperators.EqualTo
+            self.operator = PandasQueryOperatorsEnum.EqualTo
 
     def unpack(self) -> tuple[str, any]:
         return (self.column, self.value, self.operator)
@@ -31,3 +30,9 @@ class PandasQueryCondition:
 
     def is_or(self):
         return self.binder == PandasQueryConditionBinderValues.OR
+
+    def __str__(self):
+        return f"PandasQueryCondition({self.column}, {self.operator}, {self.value})"
+
+    def __repr__(self):
+        return self.__str__()
