@@ -5,7 +5,7 @@ from pandasquery.conditions import PandasQueryAndCondition
 from pandasquery.conditions import PandasQueryOrCondition
 from pandasquery.enums import PandasQueryConditionBinderValues
 from pandasquery.enums import PandasQueryOperatorsEnum
-from pandasquery import PandasColumn
+from .PandasColumn import PandasColumn
 
 
 class PandasQuery:
@@ -88,28 +88,35 @@ class PandasQuery:
             if isinstance(value, PandasColumn):
                 value = dataframe[value.name]
 
+            if isinstance(column, PandasColumn):
+                column = dataframe[column.name]
+            elif isinstance(column, str):
+                column = dataframe[column]
+
+            # print(column.dtype, value.dtype)
+
             if condition.is_and():
                 if operator == PandasQueryOperatorsEnum.EqualTo:
-                    _mask &= dataframe[column] == value
+                    _mask &= column == value
                 elif operator == PandasQueryOperatorsEnum.GreaterThan:
-                    _mask &= dataframe[column] > value
+                    _mask &= column > value
                 elif operator == PandasQueryOperatorsEnum.GreaterThanOrEqualTo:
-                    _mask &= dataframe[column] >= value
+                    _mask &= column >= value
                 elif operator == PandasQueryOperatorsEnum.LesserThan:
-                    _mask &= dataframe[column] < value
+                    _mask &= column < value
                 elif operator == PandasQueryOperatorsEnum.LesserThanOrEqualTo:
-                    _mask &= dataframe[column] <= value
+                    _mask &= column <= value
             elif condition.is_or():
                 if operator == PandasQueryOperatorsEnum.EqualTo:
-                    _mask |= dataframe[column] == value
+                    _mask |= column == value
                 elif operator == PandasQueryOperatorsEnum.GreaterThan:
-                    _mask |= dataframe[column] > value
+                    _mask |= column > value
                 elif operator == PandasQueryOperatorsEnum.GreaterThanOrEqualTo:
-                    _mask |= dataframe[column] >= value
+                    _mask |= column >= value
                 elif operator == PandasQueryOperatorsEnum.LesserThan:
-                    _mask |= dataframe[column] < value
+                    _mask |= column < value
                 elif operator == PandasQueryOperatorsEnum.LesserThanOrEqualTo:
-                    _mask |= dataframe[column] <= value
+                    _mask |= column <= value
             else:
                 raise Exception(
                     "Unknown condition type was passed. Condition binder must be in {AND, OR}."
