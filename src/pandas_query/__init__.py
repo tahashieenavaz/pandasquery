@@ -17,7 +17,7 @@ class Query:
         self.conditions.append(PandasQueryOrCondition(column=column, value=value))
         return self
 
-    def apply(self, dataframe: pandas.DataFrame):
+    def apply(self, dataframe: pandas.DataFrame) -> pandas.DataFrame:
         _mask = pandas.Series(True, index=dataframe.index)
         for condition in self.conditions:
             column, value = condition.unpack()
@@ -30,6 +30,7 @@ class Query:
                 raise Exception(
                     "Unknown condition type was passed. Condition binder must be in {_and, _or}."
                 )
+        return dataframe[_mask]
 
 
 if __name__ == "__main__":
