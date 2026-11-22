@@ -13,4 +13,4 @@ def load_data():
 
 def test_ok():
     dataframe = load_data()
-    print(Query().where("sex", "male").apply(dataframe))
+    print(Query().where("Sex", "male").apply(dataframe))
