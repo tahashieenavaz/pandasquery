@@ -1,1 +1,1 @@
-from .Query import Query
+from .PandasQuery import PandasQuery
