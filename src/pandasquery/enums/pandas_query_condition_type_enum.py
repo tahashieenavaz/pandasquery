@@ -1,6 +1,6 @@
 from enum import Enum
 
 
-class PandasQueryConditionBinderValues(Enum):
+class PandasQueryConditionTypeEnum(Enum):
     OR: str = "or"
     AND: str = "and"

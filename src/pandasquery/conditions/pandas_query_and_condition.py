@@ -1,6 +1,6 @@
 from typing import Optional
 from pandasquery.conditions import PandasQueryCondition
-from pandasquery.enums import PandasQueryConditionBinderValues
+from pandasquery.enums import PandasQueryConditionTypeEnum
 
 
 class PandasQueryAndCondition(PandasQueryCondition):
@@ -14,5 +14,5 @@ class PandasQueryAndCondition(PandasQueryCondition):
             column=column,
             operatorOrValue=operatorOrValue,
             valueIfNotProvidedBefore=valueIfNotProvidedBefore,
-            binder=PandasQueryConditionBinderValues.AND,
+            binder=PandasQueryConditionTypeEnum.AND,
         )

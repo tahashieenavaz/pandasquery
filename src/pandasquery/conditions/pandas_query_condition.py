@@ -1,16 +1,17 @@
 from typing import Optional
-from pandasquery.enums import PandasQueryConditionBinderValues
+from pandasquery.enums import PandasQueryConditionTypeEnum
 from pandasquery.enums import PandasQueryOperatorsEnum
 
 
 class PandasQueryCondition:
+
     def __init__(
         self,
         column: str,
         operatorOrValue: any,
         valueIfNotProvidedBefore: Optional[any] = None,
         *,
-        binder: Optional[PandasQueryConditionBinderValues] = None,
+        binder: Optional[PandasQueryConditionTypeEnum] = None,
     ):
         self.column = column
         self.binder = binder
@@ -26,10 +27,10 @@ class PandasQueryCondition:
         return (self.column, self.value, self.operator)
 
     def is_and(self):
-        return self.binder == PandasQueryConditionBinderValues.AND
+        return self.binder == PandasQueryConditionTypeEnum.AND
 
     def is_or(self):
-        return self.binder == PandasQueryConditionBinderValues.OR
+        return self.binder == PandasQueryConditionTypeEnum.OR
 
     def __str__(self):
         return f"PandasQueryCondition({self.column}, {self.operator}, {self.value})"
