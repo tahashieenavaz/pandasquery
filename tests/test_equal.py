@@ -1,5 +1,5 @@
 from pandas_query import Query
-from loaders import load_titanic
+from .loaders import load_titanic
 
 
 def test_where_method_works_with_single_equal_condition():

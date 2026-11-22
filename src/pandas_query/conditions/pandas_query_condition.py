@@ -4,7 +4,6 @@ from pandas_query.enums import PandasQueryOperators
 
 
 class PandasQueryCondition:
-
     def __init__(
         self,
         column: str,
@@ -31,3 +30,9 @@ class PandasQueryCondition:
 
     def is_or(self):
         return self.binder == PandasQueryConditionBinderValues.OR
+
+    def __str__(self):
+        return f"PandasQueryCondition({self.column}, {self.operator}, {self.value})"
+
+    def __repr__(self):
+        return self.__str__()
