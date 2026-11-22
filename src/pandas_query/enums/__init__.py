@@ -1,2 +1,2 @@
 from .pandas_query_condition_binder_values import PandasQueryConditionBinderValues
-from .pandas_query_operators import PandasQueryOperators
+from .pandas_query_operators_enum import PandasQueryOperatorsEnum

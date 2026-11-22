@@ -1,6 +1,6 @@
 from typing import Optional
 from pandas_query.enums import PandasQueryConditionBinderValues
-from pandas_query.enums import PandasQueryOperators
+from pandas_query.enums import PandasQueryOperatorsEnum
 
 
 class PandasQueryCondition:
@@ -20,7 +20,7 @@ class PandasQueryCondition:
             self.operator = operatorOrValue
         else:
             self.value = operatorOrValue
-            self.operator = PandasQueryOperators.EqualTo
+            self.operator = PandasQueryOperatorsEnum.EqualTo
 
     def unpack(self) -> tuple[str, any]:
         return (self.column, self.value, self.operator)
