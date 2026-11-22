@@ -7,7 +7,7 @@ from pandas_query.enums import PandasQueryConditionBinderValues
 
 
 class Query:
-    def __self__(self):
+    def __init__(self):
         self.conditions: list[PandasQueryCondition] = []
 
     def where(
@@ -24,13 +24,14 @@ class Query:
             )
 
         self.conditions.append(
-            PandasQueryCondition(
+            PandasQueryAndCondition(
                 column=column,
                 operatorOrValue=operatorOrValue,
                 valueIfNotProvidedBefore=valueIfNotProvidedBefore,
-                binder=None,
             )
         )
+
+        return self
 
     def andWhere(
         self,
@@ -51,6 +52,8 @@ class Query:
             )
         )
 
+        return self
+
     def orWhere(
         self,
         column: str,
@@ -70,6 +73,8 @@ class Query:
             )
         )
 
+        return self
+
     def apply(self, dataframe: pandas.DataFrame) -> pandas.DataFrame:
         _mask = pandas.Series(True, index=dataframe.index)
         for condition in self.conditions:
@@ -81,7 +86,7 @@ class Query:
                 _mask |= dataframe[column] == value
             else:
                 raise Exception(
-                    "Unknown condition type was passed. Condition binder must be in {_and, _or}."
+                    "Unknown condition type was passed. Condition binder must be in {AND, OR}."
                 )
         return dataframe[_mask]
 
