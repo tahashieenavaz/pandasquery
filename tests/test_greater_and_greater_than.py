@@ -1,4 +1,4 @@
-from pandas_query import Query
+from pandasquery import Query
 from .loaders import load_titanic
 
 

@@ -1,5 +1,5 @@
 from .pandas_query_condition import PandasQueryCondition
-from pandas_query.enums import PandasQueryConditionBinderValues
+from pandasquery.enums import PandasQueryConditionBinderValues
 from typing import Optional
 
 
