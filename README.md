@@ -32,3 +32,11 @@ youth_query = Query().where("age", "<=", 30)
 # apply it directly to the dataframe  
 print(youth_query.apply(dataframe))
 ```
+
+## Methods
+
+### where
+### on
+### andWhere
+### orWhere
+### apply
