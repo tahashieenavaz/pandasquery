@@ -24,7 +24,7 @@ class PandasQueryCondition:
             self.operator = PandasQueryOperators.EqualTo
 
     def unpack(self) -> tuple[str, any]:
-        return (self.column, self.value)
+        return (self.column, self.value, self.operator)
 
     def is_and(self):
         return self.binder == PandasQueryConditionBinderValues.AND
