@@ -91,7 +91,6 @@ class Query:
                     _mask &= dataframe[column] > value
                 elif operator == PandasQueryOperatorsEnum.GreaterThanOrEqualTo:
                     _mask &= dataframe[column] >= value
-                    print("detected")
                 elif operator == PandasQueryOperatorsEnum.LesserThan:
                     _mask &= dataframe[column] < value
                 elif operator == PandasQueryOperatorsEnum.LesserThanOrEqualTo:
