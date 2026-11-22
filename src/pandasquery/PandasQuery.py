@@ -1,13 +1,13 @@
 import pandas
-from pandas_query.conditions import PandasQueryCondition
-from pandas_query.conditions import PandasQueryAndCondition
-from pandas_query.conditions import PandasQueryOrCondition
 from typing import Optional
-from pandas_query.enums import PandasQueryConditionBinderValues
-from pandas_query.enums import PandasQueryOperatorsEnum
+from pandasquery.conditions import PandasQueryCondition
+from pandasquery.conditions import PandasQueryAndCondition
+from pandasquery.conditions import PandasQueryOrCondition
+from pandasquery.enums import PandasQueryConditionBinderValues
+from pandasquery.enums import PandasQueryOperatorsEnum
 
 
-class Query:
+class PandasQuery:
     def __init__(self):
         self.conditions: list[PandasQueryCondition] = []
 
@@ -111,7 +111,3 @@ class Query:
                     "Unknown condition type was passed. Condition binder must be in {AND, OR}."
                 )
         return dataframe[_mask]
-
-
-if __name__ == "__main__":
-    Query().on("name", "Taha Shieenavaz")

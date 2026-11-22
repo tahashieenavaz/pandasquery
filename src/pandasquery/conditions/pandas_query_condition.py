@@ -1,6 +1,6 @@
 from typing import Optional
-from pandas_query.enums import PandasQueryConditionBinderValues
-from pandas_query.enums import PandasQueryOperatorsEnum
+from pandasquery.enums import PandasQueryConditionBinderValues
+from pandasquery.enums import PandasQueryOperatorsEnum
 
 
 class PandasQueryCondition:

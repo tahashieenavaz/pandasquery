@@ -8,7 +8,7 @@ build-backend = "setuptools.build_meta"
 
 
 [project]
-name = "pandas-query"
+name = "pandasquery"
 dynamic = ["version"]
 
 description = "Provides an efficient simple interface to query a Pandas DataFrame or Series."
@@ -19,7 +19,7 @@ license = "MIT"
 license-files = ["LICENSE*"]
 
 authors = [
-    { name = "Taha Shieenavaz", email = "tahashieenavaz@gmail.com" },
+    { name = "Taha Shieenavaz", email = "tahashieenavaz@gmail.com"},
 ]
 
 keywords = ["series", "pandas", "dataframe", "search", "query"]
@@ -77,7 +77,7 @@ exclude = [
 
 
 [tool.setuptools.package-data]
-pandas_query = ["*.md", "*.txt", "*.png"]
+pandasquery = ["*.md", "*.txt", "*.png"]
 
 
 [tool.setuptools_scm]
