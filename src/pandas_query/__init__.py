@@ -2,11 +2,54 @@ import pandas
 from pandas_query.conditions import PandasQueryCondition
 from pandas_query.conditions import PandasQueryAndCondition
 from pandas_query.conditions import PandasQueryOrCondition
+from typing import Optional
+from pandas_query.enums import PandasQueryConditionBinderValues
 
 
 class Query:
     def __self__(self):
         self.conditions: list[PandasQueryCondition] = []
+
+    def where(
+        self,
+        column: str,
+        operatorOrValue: any,
+        valueIfNotProvidedBefore: Optional[any] = None,
+        *,
+        binder: Optional[PandasQueryConditionBinderValues] = None,
+    ):
+        if binder is None and len(self.conditions) != 0:
+            raise Exception(
+                "Binder can be None only for the first condition. Use orWhere or andWhere instead of where over and over again."
+            )
+
+        self.conditions.append(
+            PandasQueryCondition(
+                column=column,
+                operatorOrValue=operatorOrValue,
+                valueIfNotProvidedBefore=valueIfNotProvidedBefore,
+                binder=None,
+            )
+        )
+
+    def andWhere(
+        self,
+        column: str,
+        operatorOrValue: any,
+        valueIfNotProvidedBefore: Optional[any] = None,
+    ):
+        if len(self.conditions) == 0:
+            raise Exception(
+                "Please start the conditions using `where` method and continue using auxiliaries such as `andWhere` and `orWhere`."
+            )
+
+        self.conditions.append(
+            PandasQueryAndCondition(
+                column=column,
+                operatorOrValue=operatorOrValue,
+                valueIfNotProvidedBefore=valueIfNotProvidedBefore,
+            )
+        )
 
     def _and(self, column: str, value: any):
         self.conditions.append(PandasQueryAndCondition(column=column, value=value))
