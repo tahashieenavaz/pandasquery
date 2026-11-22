@@ -85,6 +85,9 @@ class PandasQuery:
             if operator not in PandasQueryOperatorsEnum:
                 raise Exception(f"Invalid operator found in conditions. {operator}")
 
+            if isinstance(value, PandasColumn):
+                value = dataframe[value.name]
+
             if condition.is_and():
                 if operator == PandasQueryOperatorsEnum.EqualTo:
                     _mask &= dataframe[column] == value
