@@ -11,6 +11,7 @@ def load_data():
     return pandas.read_csv(file_location, index_col=0)
 
 
-def test_ok():
+def test_where_method_works_with_single_equal_condition():
     dataframe = load_data()
-    print(Query().where("Sex", "male").apply(dataframe))
+    assert len(Query().where("Sex", "male").apply(dataframe)) == 573
+    assert len(Query().where("Sex", "female").apply(dataframe)) == 314
