@@ -3,7 +3,7 @@ from typing import Optional
 from pandasquery.conditions import PandasQueryCondition
 from pandasquery.conditions import PandasQueryAndCondition
 from pandasquery.conditions import PandasQueryOrCondition
-from pandasquery.enums import PandasQueryConditionBinderValues
+from pandasquery.enums import PandasQueryConditionTypeEnum
 from pandasquery.enums import PandasQueryOperatorsEnum
 
 
@@ -17,7 +17,7 @@ class PandasQuery:
         operatorOrValue: any,
         valueIfNotProvidedBefore: Optional[any] = None,
         *,
-        binder: Optional[PandasQueryConditionBinderValues] = None,
+        binder: Optional[PandasQueryConditionTypeEnum] = None,
     ):
         if binder is None and len(self.conditions) != 0:
             raise Exception(
