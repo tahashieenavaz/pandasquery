@@ -93,8 +93,6 @@ class PandasQuery:
             elif isinstance(column, str):
                 column = dataframe[column]
 
-            # print(column.dtype, value.dtype)
-
             if condition.is_and():
                 if operator == PandasQueryOperatorsEnum.EqualTo:
                     _mask &= column == value
