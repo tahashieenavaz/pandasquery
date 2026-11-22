@@ -4,7 +4,6 @@ from pandas_query.enums import PandasQueryOperators
 
 
 class PandasQueryCondition:
-
     def __init__(
         self,
         column: str,
