@@ -7,7 +7,7 @@ from pandas_query.enums import PandasQueryConditionBinderValues
 
 
 class Query:
-    def __self__(self):
+    def __init__(self):
         self.conditions: list[PandasQueryCondition] = []
 
     def where(
