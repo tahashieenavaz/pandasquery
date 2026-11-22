@@ -111,7 +111,3 @@ class Query:
                     "Unknown condition type was passed. Condition binder must be in {AND, OR}."
                 )
         return dataframe[_mask]
-
-
-if __name__ == "__main__":
-    Query().on("name", "Taha Shieenavaz")
