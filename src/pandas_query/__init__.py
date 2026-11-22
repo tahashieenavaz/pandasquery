@@ -51,13 +51,24 @@ class Query:
             )
         )
 
-    def _and(self, column: str, value: any):
-        self.conditions.append(PandasQueryAndCondition(column=column, value=value))
-        return self
+    def orWhere(
+        self,
+        column: str,
+        operatorOrValue: any,
+        valueIfNotProvidedBefore: Optional[any] = None,
+    ):
+        if len(self.conditions) == 0:
+            raise Exception(
+                "Please start the conditions using `where` method and continue using auxiliaries such as `andWhere` and `orWhere`."
+            )
 
-    def _or(self, column: str, value: any):
-        self.conditions.append(PandasQueryOrCondition(column=column, value=value))
-        return self
+        self.conditions.append(
+            PandasQueryOrCondition(
+                column=column,
+                operatorOrValue=operatorOrValue,
+                valueIfNotProvidedBefore=valueIfNotProvidedBefore,
+            )
+        )
 
     def apply(self, dataframe: pandas.DataFrame) -> pandas.DataFrame:
         _mask = pandas.Series(True, index=dataframe.index)
