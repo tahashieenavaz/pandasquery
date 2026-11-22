@@ -33,3 +33,6 @@ class PandasQueryCondition:
 
     def __str__(self):
         return f"PandasQueryCondition({self.column}, {self.operator}, {self.value})"
+
+    def __repr__(self):
+        return self.__str__()
