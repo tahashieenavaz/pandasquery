@@ -5,6 +5,7 @@ from pandasquery.conditions import PandasQueryAndCondition
 from pandasquery.conditions import PandasQueryOrCondition
 from pandasquery.enums import PandasQueryConditionBinderValues
 from pandasquery.enums import PandasQueryOperatorsEnum
+from pandasquery import PandasColumn
 
 
 class PandasQuery:
@@ -13,7 +14,7 @@ class PandasQuery:
 
     def where(
         self,
-        column: str,
+        column: str | PandasColumn,
         operatorOrValue: any,
         valueIfNotProvidedBefore: Optional[any] = None,
         *,
