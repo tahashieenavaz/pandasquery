@@ -2,7 +2,6 @@ import pandas
 from pandas_query.conditions import PandasQueryCondition
 from pandas_query.conditions import PandasQueryAndCondition
 from pandas_query.conditions import PandasQueryOrCondition
-from pandas_query.enums import PandasQueryConditionBinderValues
 
 
 class Query:
