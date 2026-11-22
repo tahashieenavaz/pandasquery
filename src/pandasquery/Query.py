@@ -1,8 +1,8 @@
 import pandas
+from typing import Optional
 from pandasquery.conditions import PandasQueryCondition
 from pandasquery.conditions import PandasQueryAndCondition
 from pandasquery.conditions import PandasQueryOrCondition
-from typing import Optional
 from pandasquery.enums import PandasQueryConditionBinderValues
 from pandasquery.enums import PandasQueryOperatorsEnum
 
