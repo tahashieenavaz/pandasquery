@@ -32,6 +32,8 @@ class Query:
             )
         )
 
+        return self
+
     def andWhere(
         self,
         column: str,
@@ -51,6 +53,8 @@ class Query:
             )
         )
 
+        return self
+
     def orWhere(
         self,
         column: str,
@@ -69,6 +73,8 @@ class Query:
                 valueIfNotProvidedBefore=valueIfNotProvidedBefore,
             )
         )
+
+        return self
 
     def apply(self, dataframe: pandas.DataFrame) -> pandas.DataFrame:
         _mask = pandas.Series(True, index=dataframe.index)
