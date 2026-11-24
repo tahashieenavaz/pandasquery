@@ -3,7 +3,6 @@ from typing import Optional
 from pandasquery.conditions import PandasQueryCondition
 from pandasquery.conditions import PandasQueryAndCondition
 from pandasquery.conditions import PandasQueryOrCondition
-from pandasquery.enums import PandasQueryConditionTypeEnum
 from pandasquery.enums import PandasQueryOperatorsEnum
 from pandasquery.exceptions import InvalidOperatorInConditionException
 from pandasquery.exceptions import EmptyConditionsException
