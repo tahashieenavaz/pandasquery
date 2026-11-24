@@ -85,8 +85,7 @@ class PandasQuery:
 
             if isinstance(value, PandasColumn):
                 value = dataframe[value.name]
-
-            if isinstance(value, str) and (
+            elif isinstance(value, str) and (
                 value.startswith("column:") or value.startswith("col:")
             ):
                 value_column_name = value.split(":")[-1]
@@ -94,8 +93,17 @@ class PandasQuery:
 
             if isinstance(column, PandasColumn):
                 column = dataframe[column.name]
-            elif isinstance(column, str):
+            elif (
+                isinstance(column, str)
+                and not column.startswith("col:")
+                and not column.startswith("column:")
+            ):
                 column = dataframe[column]
+            elif isinstance(column, str) and (
+                column.startswith("col:") or column.startswith("column:")
+            ):
+                column_column_name = value.split(":")[-1]
+                column = dataframe[column_column_name]
 
             if condition.is_and():
                 if operator == PandasQueryOperatorsEnum.EqualTo:
