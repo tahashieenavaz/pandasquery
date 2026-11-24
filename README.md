@@ -35,7 +35,6 @@ print(youth_query.apply(dataframe))
 
 ## Methods
 
-### where
 ### on
 ### andWhere
 ### orWhere
