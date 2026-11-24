@@ -16,7 +16,6 @@ class PandasQuery:
         operatorOrValue: any,
         valueIfNotProvidedBefore: Optional[any] = None,
     ):
-
         self.conditions: list[PandasQueryCondition] = []
         self.conditions.append(
             PandasQueryAndCondition(
