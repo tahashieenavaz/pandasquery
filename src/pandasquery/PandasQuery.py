@@ -102,7 +102,7 @@ class PandasQuery:
             elif isinstance(column, str) and (
                 column.startswith("col:") or column.startswith("column:")
             ):
-                column_column_name = value.split(":")[-1]
+                column_column_name = column.split(":")[-1]
                 column = dataframe[column_column_name]
 
             if condition.is_and():
