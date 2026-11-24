@@ -26,8 +26,6 @@ class PandasQuery:
             )
         )
 
-        return self
-
     def andWhere(
         self,
         column: str,
