@@ -86,6 +86,12 @@ class PandasQuery:
             if isinstance(value, PandasColumn):
                 value = dataframe[value.name]
 
+            if isinstance(value, str) and (
+                value.startswith("column:") or value.startswith("col:")
+            ):
+                value_column_name = value.split(":")[-1]
+                value = dataframe[value_column_name]
+
             if isinstance(column, PandasColumn):
                 column = dataframe[column.name]
             elif isinstance(column, str):
