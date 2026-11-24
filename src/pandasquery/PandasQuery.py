@@ -11,22 +11,14 @@ from .PandasColumn import PandasColumn
 
 
 class PandasQuery:
-    def __init__(self):
-        self.conditions: list[PandasQueryCondition] = []
-
-    def where(
+    def __init__(
         self,
         column: str | PandasColumn,
         operatorOrValue: any,
         valueIfNotProvidedBefore: Optional[any] = None,
-        *,
-        binder: Optional[PandasQueryConditionTypeEnum] = None,
     ):
-        if binder is None and len(self.conditions) != 0:
-            raise Exception(
-                "Binder can be None only for the first condition. Use orWhere or andWhere instead of where over and over again."
-            )
 
+        self.conditions: list[PandasQueryCondition] = []
         self.conditions.append(
             PandasQueryAndCondition(
                 column=column,
