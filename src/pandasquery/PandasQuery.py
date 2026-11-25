@@ -67,6 +67,7 @@ class PandasQuery:
         _mask = pandas.Series(True, index=dataframe.index)
         for condition in self.conditions:
             adam, eve, operator = condition.unpack()
+            print(adam, eve)
 
             if operator not in PandasQueryOperatorsEnum:
                 raise InvalidOperatorInConditionException(operator)
@@ -84,7 +85,7 @@ class PandasQuery:
             elif (
                 isinstance(adam, str)
                 and not adam.startswith("col:")
-                and not adam.startswith("adam:")
+                and not adam.startswith("column:")
             ):
                 adam = dataframe[adam]
             elif isinstance(adam, str) and (
