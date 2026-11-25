@@ -12,14 +12,14 @@ from .PandasColumn import PandasColumn
 class PandasQuery:
     def __init__(
         self,
-        column: str | PandasColumn,
+        adam: any,
         operatorOrValue: any,
         valueIfNotProvidedBefore: Optional[any] = None,
     ):
         self.conditions: list[PandasQueryCondition] = []
         self.conditions.append(
             PandasQueryAndCondition(
-                column=column,
+                adam=adam,
                 operatorOrValue=operatorOrValue,
                 valueIfNotProvidedBefore=valueIfNotProvidedBefore,
             )
@@ -27,7 +27,7 @@ class PandasQuery:
 
     def andWhere(
         self,
-        column: str,
+        adam: str,
         operatorOrValue: any,
         valueIfNotProvidedBefore: Optional[any] = None,
     ):
@@ -36,7 +36,7 @@ class PandasQuery:
 
         self.conditions.append(
             PandasQueryAndCondition(
-                column=column,
+                adam=adam,
                 operatorOrValue=operatorOrValue,
                 valueIfNotProvidedBefore=valueIfNotProvidedBefore,
             )
@@ -46,7 +46,7 @@ class PandasQuery:
 
     def orWhere(
         self,
-        column: str,
+        adam: str,
         operatorOrValue: any,
         valueIfNotProvidedBefore: Optional[any] = None,
     ):
@@ -55,7 +55,7 @@ class PandasQuery:
 
         self.conditions.append(
             PandasQueryOrCondition(
-                column=column,
+                adam=adam,
                 operatorOrValue=operatorOrValue,
                 valueIfNotProvidedBefore=valueIfNotProvidedBefore,
             )
@@ -66,55 +66,55 @@ class PandasQuery:
     def apply(self, dataframe: pandas.DataFrame) -> pandas.DataFrame:
         _mask = pandas.Series(True, index=dataframe.index)
         for condition in self.conditions:
-            column, value, operator = condition.unpack()
+            adam, eve, operator = condition.unpack()
 
             if operator not in PandasQueryOperatorsEnum:
                 raise InvalidOperatorInConditionException(operator)
 
-            if isinstance(value, PandasColumn):
-                value = dataframe[value.name]
-            elif isinstance(value, str) and (
-                value.startswith("column:") or value.startswith("col:")
+            if isinstance(eve, PandasColumn):
+                eve = dataframe[eve.name]
+            elif isinstance(eve, str) and (
+                eve.startswith("column:") or eve.startswith("col:")
             ):
-                value_column_name = value.split(":")[-1]
-                value = dataframe[value_column_name]
+                value_column_name = eve.split(":")[-1]
+                eve = dataframe[value_column_name]
 
-            if isinstance(column, PandasColumn):
-                column = dataframe[column.name]
+            if isinstance(adam, PandasColumn):
+                adam = dataframe[adam.name]
             elif (
-                isinstance(column, str)
-                and not column.startswith("col:")
-                and not column.startswith("column:")
+                isinstance(adam, str)
+                and not adam.startswith("col:")
+                and not adam.startswith("column:")
             ):
-                column = dataframe[column]
-            elif isinstance(column, str) and (
-                column.startswith("col:") or column.startswith("column:")
+                adam = dataframe[adam]
+            elif isinstance(adam, str) and (
+                adam.startswith("col:") or adam.startswith("column:")
             ):
-                column_column_name = column.split(":")[-1]
-                column = dataframe[column_column_name]
+                adam_column_name = adam.split(":")[-1]
+                adam = dataframe[adam_column_name]
 
             if condition.is_and():
                 if operator == PandasQueryOperatorsEnum.EqualTo:
-                    _mask &= column == value
+                    _mask &= adam == eve
                 elif operator == PandasQueryOperatorsEnum.GreaterThan:
-                    _mask &= column > value
+                    _mask &= adam > eve
                 elif operator == PandasQueryOperatorsEnum.GreaterThanOrEqualTo:
-                    _mask &= column >= value
+                    _mask &= adam >= eve
                 elif operator == PandasQueryOperatorsEnum.LesserThan:
-                    _mask &= column < value
+                    _mask &= adam < eve
                 elif operator == PandasQueryOperatorsEnum.LesserThanOrEqualTo:
-                    _mask &= column <= value
+                    _mask &= adam <= eve
             elif condition.is_or():
                 if operator == PandasQueryOperatorsEnum.EqualTo:
-                    _mask |= column == value
+                    _mask |= adam == eve
                 elif operator == PandasQueryOperatorsEnum.GreaterThan:
-                    _mask |= column > value
+                    _mask |= adam > eve
                 elif operator == PandasQueryOperatorsEnum.GreaterThanOrEqualTo:
-                    _mask |= column >= value
+                    _mask |= adam >= eve
                 elif operator == PandasQueryOperatorsEnum.LesserThan:
-                    _mask |= column < value
+                    _mask |= adam < eve
                 elif operator == PandasQueryOperatorsEnum.LesserThanOrEqualTo:
-                    _mask |= column <= value
+                    _mask |= adam <= eve
             else:
                 raise Exception(
                     "Unknown condition type was passed. Condition binder must be in {AND, OR}."

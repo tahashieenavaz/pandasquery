@@ -6,12 +6,12 @@ from .pandas_query_condition import PandasQueryCondition
 class PandasQueryOrCondition(PandasQueryCondition):
     def __init__(
         self,
-        column: str,
+        adam: str,
         operatorOrValue: any,
         valueIfNotProvidedBefore: Optional[any] = None,
     ):
         super().__init__(
-            column=column,
+            adam=adam,
             operatorOrValue=operatorOrValue,
             valueIfNotProvidedBefore=valueIfNotProvidedBefore,
             binder=PandasQueryConditionTypeEnum.OR,
