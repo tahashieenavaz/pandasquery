@@ -67,7 +67,6 @@ class PandasQuery:
         _mask = pandas.Series(True, index=dataframe.index)
         for condition in self.conditions:
             adam, eve, operator = condition.unpack()
-            print(adam, eve)
 
             if operator not in PandasQueryOperatorsEnum:
                 raise InvalidOperatorInConditionException(operator)
