@@ -6,12 +6,12 @@ from pandasquery.enums import PandasQueryConditionTypeEnum
 class PandasQueryAndCondition(PandasQueryCondition):
     def __init__(
         self,
-        column: str,
+        adam: any,
         operatorOrValue: any,
         valueIfNotProvidedBefore: Optional[any] = None,
     ):
         super().__init__(
-            column=column,
+            column=adam,
             operatorOrValue=operatorOrValue,
             valueIfNotProvidedBefore=valueIfNotProvidedBefore,
             binder=PandasQueryConditionTypeEnum.AND,
