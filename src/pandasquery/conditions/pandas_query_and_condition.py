@@ -11,7 +11,7 @@ class PandasQueryAndCondition(PandasQueryCondition):
         valueIfNotProvidedBefore: Optional[any] = None,
     ):
         super().__init__(
-            column=adam,
+            adam=adam,
             operatorOrValue=operatorOrValue,
             valueIfNotProvidedBefore=valueIfNotProvidedBefore,
             binder=PandasQueryConditionTypeEnum.AND,
