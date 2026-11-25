@@ -12,7 +12,7 @@ from .PandasColumn import PandasColumn
 class PandasQuery:
     def __init__(
         self,
-        adam: str | PandasColumn,
+        adam: any,
         operatorOrValue: any,
         valueIfNotProvidedBefore: Optional[any] = None,
     ):
