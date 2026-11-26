@@ -106,6 +106,11 @@ class PandasQuery:
                     _mask &= adam < eve
                 elif operator == PandasQueryOperatorsEnum.LesserThanOrEqualTo:
                     _mask &= adam <= eve
+                elif operator in {
+                    PandasQueryOperatorsEnum.StartsWith,
+                    PandasQueryOperatorsEnum.StartsWithSymbol,
+                }:
+                    _mask &= adam.str.startswith(eve, na=False)
             elif condition.is_or():
                 if operator == PandasQueryOperatorsEnum.EqualTo:
                     _mask |= adam == eve
