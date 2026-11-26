@@ -9,3 +9,5 @@ class PandasQueryOperatorsEnum(StrEnum):
     LesserThanOrEqualTo = "<="
     StartsWith = "startswith"
     StartsWithSymbol = "^"
+    EndsWith = "endswith"
+    EndsWithSymbol = "$"
