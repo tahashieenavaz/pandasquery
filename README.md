@@ -21,13 +21,14 @@ pip install -e .
 You can instantiate queries with `Query` class and apply them memory-efficiently to the same dataframe as  you please: 
 
 ```python
-from pandasquery import Query
+from pandasquery import PandasQuery
+from project.loaders import load_dataframe
 
 # load the data
 dataframe = load_dataframe()
 
 # create the specific query
-youth_query = Query("age", "<=", 30)
+youth_query = PandasQuery("age", "<=", 30)
 
 # apply it directly to the dataframe  
 print(youth_query.apply(dataframe))
@@ -42,10 +43,11 @@ You need to specify the first condition and only the first condition while initi
 
 ```python
 from project.loaders import load_users
+from pandasquery import PandasQuery
 
 users = load_users()
 
-verbose_jacks = Query("comments", ">=", 1000).andWhere("name", "Jack").apply(users)
+verbose_jacks = PandasQuery("comments", ">=", 1000).andWhere("name", "Jack").apply(users)
 
 print(verbose_jacks)
 ```
@@ -54,10 +56,11 @@ print(verbose_jacks)
 
 ```python
 from project.loaders import load_products
+from pandasquery import PandasQuery
 
 products = load_products()
 
-hot_products = Query("reviews", ">=", 400).orWhere("rating", ">=", 4).apply(products)
+hot_products = PandasQuery("reviews", ">=", 400).orWhere("rating", ">=", 4).apply(products)
 
 print(hot_products)
 ```
