@@ -111,6 +111,11 @@ class PandasQuery:
                     PandasQueryOperatorsEnum.StartsWithSymbol,
                 }:
                     _mask &= adam.str.startswith(eve, na=False)
+                elif operator in {
+                    PandasQueryOperatorsEnum.EndsWith,
+                    PandasQueryOperatorsEnum.EndsWithSymbol,
+                }:
+                    _mask &= adam.str.endswith(eve, na=False)
             elif condition.is_or():
                 if operator == PandasQueryOperatorsEnum.EqualTo:
                     _mask |= adam == eve
@@ -127,6 +132,11 @@ class PandasQuery:
                     PandasQueryOperatorsEnum.StartsWithSymbol,
                 }:
                     _mask |= adam.str.startswith(eve, na=False)
+                elif operator in {
+                    PandasQueryOperatorsEnum.EndsWith,
+                    PandasQueryOperatorsEnum.EndsWithSymbol,
+                }:
+                    _mask |= adam.str.endswith(eve, na=False)
             else:
                 raise Exception(
                     "Unknown condition type was passed. Condition binder must be in {AND, OR}."
