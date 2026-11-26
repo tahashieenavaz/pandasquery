@@ -138,9 +138,7 @@ class PandasQuery:
                 }:
                     _mask |= adam.str.endswith(eve, na=False)
             else:
-                raise Exception(
-                    "Unknown condition type was passed. Condition binder must be in {AND, OR}."
-                )
+                raise Exception
         filtered_dataframe = dataframe[_mask]
 
         if stdout:
