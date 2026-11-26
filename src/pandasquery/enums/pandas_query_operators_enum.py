@@ -7,3 +7,5 @@ class PandasQueryOperatorsEnum(StrEnum):
     GreaterThanOrEqualTo = ">="
     LesserThanOrEqualTo = "<="
     EqualTo = "="
+    StartsWith = "startswith"
+    StartsWithSymbol = "$"
