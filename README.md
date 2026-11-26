@@ -27,7 +27,7 @@ from pandasquery import Query
 dataframe = load_dataframe()
 
 # create the specific query
-youth_query = Query().where("age", "<=", 30)
+youth_query = Query("age", "<=", 30)
 
 # apply it directly to the dataframe  
 print(youth_query.apply(dataframe))
