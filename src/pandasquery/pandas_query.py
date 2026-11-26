@@ -6,6 +6,7 @@ from pandasquery.conditions import PandasQueryOrCondition
 from pandasquery.enums import PandasQueryOperatorsEnum
 from pandasquery.exceptions import InvalidOperatorInConditionException
 from pandasquery.exceptions import EmptyConditionsException
+from pandasquery.exceptions import UnknownBinderException
 from .pandas_column import PandasColumn
 
 
@@ -138,7 +139,8 @@ class PandasQuery:
                 }:
                     _mask |= adam.str.endswith(eve, na=False)
             else:
-                raise Exception
+                raise UnknownBinderException
+
         filtered_dataframe = dataframe[_mask]
 
         if stdout:
