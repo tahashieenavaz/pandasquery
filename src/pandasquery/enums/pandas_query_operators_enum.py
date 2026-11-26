@@ -8,4 +8,4 @@ class PandasQueryOperatorsEnum(StrEnum):
     GreaterThanOrEqualTo = ">="
     LesserThanOrEqualTo = "<="
     StartsWith = "startswith"
-    StartsWithSymbol = "$"
+    StartsWithSymbol = "^"
