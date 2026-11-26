@@ -1,4 +1,4 @@
-from .PandasQueryColumn import PandasQueryColumn
+from .pandas_query_column import PandasQueryColumn
 
 
 class PandasColumn(PandasQueryColumn):

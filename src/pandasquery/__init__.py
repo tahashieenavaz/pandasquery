@@ -1,2 +1,2 @@
-from .PandasQuery import PandasQuery
-from .PandasColumn import PandasColumn
+from .pandas_query import PandasQuery
+from .pandas_column import PandasColumn

@@ -6,7 +6,7 @@ from pandasquery.conditions import PandasQueryOrCondition
 from pandasquery.enums import PandasQueryOperatorsEnum
 from pandasquery.exceptions import InvalidOperatorInConditionException
 from pandasquery.exceptions import EmptyConditionsException
-from .PandasColumn import PandasColumn
+from .pandas_column import PandasColumn
 
 
 class PandasQuery:
