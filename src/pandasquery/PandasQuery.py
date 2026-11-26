@@ -63,7 +63,9 @@ class PandasQuery:
 
         return self
 
-    def apply(self, dataframe: pandas.DataFrame) -> pandas.DataFrame:
+    def apply(
+        self, dataframe: pandas.DataFrame, *, stdout: bool = False
+    ) -> pandas.DataFrame:
         _mask = pandas.Series(True, index=dataframe.index)
         for condition in self.conditions:
             adam, eve, operator = condition.unpack()
@@ -119,4 +121,9 @@ class PandasQuery:
                 raise Exception(
                     "Unknown condition type was passed. Condition binder must be in {AND, OR}."
                 )
-        return dataframe[_mask]
+        filtered_dataframe = dataframe[_mask]
+
+        if stdout:
+            print(filtered_dataframe)
+
+        return filtered_dataframe
