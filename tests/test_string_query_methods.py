@@ -2,7 +2,7 @@ from pandasquery import PandasQuery
 from .loaders import load_titanic
 
 
-def test_starts_with_string_query():
+def test_startswith_string_query():
     dataframe = load_titanic()
     miss_query = PandasQuery("col:Name", "startswith", "Miss.")
     miss_query_symbol = PandasQuery("col:Name", "^", "Miss.")
