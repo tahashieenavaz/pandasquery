@@ -2,8 +2,10 @@ from enum import StrEnum
 
 
 class PandasQueryOperatorsEnum(StrEnum):
+    EqualTo = "="
     GreaterThan = ">"
     LesserThan = "<"
     GreaterThanOrEqualTo = ">="
     LesserThanOrEqualTo = "<="
-    EqualTo = "="
+    StartsWith = "startswith"
+    StartsWithSymbol = "^"
