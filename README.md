@@ -16,7 +16,7 @@ Alternatively, for development after cloning the repository use:
 pip install -e .
 ```
 
-## Usage
+## Basic Usage
 
 You can instantiate queries with `Query` class and apply them memory-efficiently to the same dataframe as  you please: 
 
@@ -35,7 +35,32 @@ print(youth_query.apply(dataframe))
 
 ## Methods
 
-### on
+
+You need to specify the first condition and only the first condition while initiating the PandasQuery class as an argument. Following that you keep adding conditions using `andWhere` or `orWhere` methods: 
+
 ### andWhere
+
+```python
+from project.loaders import load_users
+
+users = load_users()
+
+verbose_jacks = Query("comments", ">=", 1000).andWhere("name", "Jack").apply(users)
+
+print(verbose_jacks)
+```
+
 ### orWhere
+
+```python
+from project.loaders import load_products
+
+products = load_products()
+
+hot_products = Query("reviews", ">=", 400).orWhere("rating", ">=", 4).apply(products)
+
+print(hot_products)
+```
+
+
 ### apply
