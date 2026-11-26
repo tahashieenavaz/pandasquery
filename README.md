@@ -51,4 +51,16 @@ print(verbose_jacks)
 ```
 
 ### orWhere
+
+```python
+from project.loaders import load_products
+
+products = load_products()
+
+hot_products = Query("reviews", ">=", 400).orWhere("rating", ">=", 4).apply(products)
+
+print(hot_products)
+```
+
+
 ### apply
